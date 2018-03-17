@@ -21,7 +21,12 @@
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
-        
+        public virtual DbSet<Exam> Exams { get; set; }
+        public virtual DbSet<Moment> Moments { get; set; }
+        public virtual DbSet<MomentRoom> MomentRooms { get; set; }
+        public virtual DbSet<Room> Rooms { get; set; }
+        public virtual DbSet<Surveillant> Surveillants { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 
     //public class MyEntity

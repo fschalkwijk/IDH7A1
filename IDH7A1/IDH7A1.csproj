@@ -103,7 +103,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803171517316_Add User Exam Moment Room and Surveillant.cs" />
+    <Compile Include="Migrations\201803171517316_Add User Exam Moment Room and Surveillant.Designer.cs">
+      <DependentUpon>201803171517316_Add User Exam Moment Room and Surveillant.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Exam.cs" />
+    <Compile Include="Models\Moment.cs" />
+    <Compile Include="Models\MomentRoom.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\Surveillant.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\SchoolDbContext.cs" />
   </ItemGroup>
@@ -120,6 +130,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803171517316_Add User Exam Moment Room and Surveillant.resx">
+      <DependentUpon>201803171517316_Add User Exam Moment Room and Surveillant.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
