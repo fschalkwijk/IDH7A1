@@ -27,6 +27,30 @@
         </dd>
 
     </dl>
+    @Html.ActionLink("Add Room", "create", "MomentRooms")
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Room")
+            </th>
+            <th>
+                @Html.DisplayName("Surveillant")
+            </th>
+        </tr>
+
+        @foreach (var item in Model.MomentRooms)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.Key)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surveillant.Name)
+            </td>
+        </tr>
+        }
+
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

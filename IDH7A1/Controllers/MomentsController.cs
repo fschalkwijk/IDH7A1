@@ -38,7 +38,7 @@ namespace IDH7A1.Controllers
         // GET: Moments/Create
         public ActionResult Create()
         {
-            ViewBag.exams = db.Exams.ToList();
+            ViewBag.ExamId = new SelectList(db.Surveillants, "Id", "Name");
 
             return View();
         }
@@ -48,7 +48,7 @@ namespace IDH7A1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,StartTime,EndTime,Exam_Id")] Moment moment)
+        public ActionResult Create([Bind(Include = "StartTime,EndTime,ExamId")] Moment moment)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +56,8 @@ namespace IDH7A1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.ExamId = new SelectList(db.Surveillants, "Id", "Name");
 
             return View(moment);
         }

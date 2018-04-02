@@ -12,8 +12,10 @@ namespace IDH7A1.Models
         [StringLength(10)]
         public string Key { get; set; }
 
+        [Required]
         public int Computers { get; set; }
 
+        [Required]
         public int MaxStudents { get; set; }
 
         public virtual ICollection<MomentRoom> MomentRooms { get; set; }
