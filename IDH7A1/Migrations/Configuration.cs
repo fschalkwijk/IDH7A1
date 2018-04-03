@@ -9,7 +9,7 @@ namespace IDH7A1.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(IDH7A1.Models.SchoolDbContext context)
