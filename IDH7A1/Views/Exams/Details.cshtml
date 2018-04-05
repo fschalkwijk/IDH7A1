@@ -66,6 +66,14 @@
             @Html.DisplayFor(model => model.EuropeanCredits)
         </dd>
 
+        <dt>
+            Created By
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email) (id: @Html.DisplayFor(model => model.User.Id))
+        </dd>
+
     </dl>
 </div>
 <p>

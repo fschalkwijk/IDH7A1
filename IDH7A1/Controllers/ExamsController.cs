@@ -1,5 +1,4 @@
-﻿//Author: Elroy Pellicaan
-
+﻿//  Author: Elroy Pellicaan
 
 using System;
 using System.Collections.Generic;
@@ -16,6 +15,14 @@ namespace IDH7A1.Controllers
     public class ExamsController : Controller
     {
         private SchoolDbContext db = new SchoolDbContext();
+        private User CurrentUser;
+
+        // constructor, is always called first when creating the controller
+        public ExamsController()
+        {
+            // retrieve the "current" user from the db
+            CurrentUser = db.Users.Find(2);
+        }
 
         // GET: Exams
         public ActionResult Index()
@@ -53,6 +60,9 @@ namespace IDH7A1.Controllers
         {
             if (ModelState.IsValid)
             {
+                // set the user id outside of the form
+                exam.UserID = CurrentUser.Id;
+
                 db.Exams.Add(exam);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -81,11 +91,14 @@ namespace IDH7A1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Subject,Students,ComputerRoom,SurveillantNeeded,Code,EuropeanCredits")] Exam exam)
+        public ActionResult Edit([Bind(Include = "Id,Name,Subject,Students,ComputerRoom,SurveillantNeeded,Code,EuropeanCredits,UserID")] Exam exam)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(exam).State = EntityState.Modified;
+                // load the user ID from the previously saved exam to prevent overwriting the property with the current user's id
+                Exam previousExam = db.Exams.Find(exam.Id);
+
+                exam.UserID = previousExam.UserID;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
